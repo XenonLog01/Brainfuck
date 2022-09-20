@@ -24,7 +24,7 @@ proc runFile(file: string) =
   var 
     opPtr: int
     op: char
-    tape: array[256, int]
+    tape: array[256, uint8]
     tapePtr: int = 0
 
   while opPtr < file.len:
@@ -33,12 +33,8 @@ proc runFile(file: string) =
     case op:
       of '+':
         tape[tapePtr] += 1
-        if tape[tapePtr] == 255: # Essentially turns the tape into a list of wrapping uint8_t's
-          tape[tapePtr] = 0
       of '-':
         tape[tapePtr] -= 1
-        if tape[tapePtr] < 0:   # Essentially turns the tape into a list of wrapping uint8_t's
-          tape[tapePtr] = 255
       of '>':
         tapePtr += 1
         if tapePtr == tape.len:
@@ -50,7 +46,7 @@ proc runFile(file: string) =
       of '.':
         write(stdout, tape[tapePtr].char)
       of ',':
-        tape[tapePtr] = readLine(stdin)[0].int
+        tape[tapePtr] = readLine(stdin)[0].uint8
       of '[':
         if tape[tapePtr] == 0:
           opPtr = loops[opPtr]
