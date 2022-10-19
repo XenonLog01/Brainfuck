@@ -1,3 +1,3 @@
 # Brainfuck
 
-A simple interpreter(and possibly eventually compiler) for brainfuck, written in nim.
+A simple interpreter for brainfuck, written in nim.
