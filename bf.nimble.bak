@@ -8,3 +8,7 @@ binDir      = "bin"
 
 # Dependencies:
 requires "nim >= 1.6.6"
+
+# Tasks:
+task test, "Test the program":
+  exec "nim c -r tests/test.nim"
