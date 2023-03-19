@@ -20,15 +20,16 @@ proc genLoops(file: string): Table[int, int] =
   return loopTable
 
 proc interpretFile*(file: string) =
-  let loops = genLoops(file)
+  let prog = readFile(file)
+  let loops = genLoops(prog)
   var 
     opPtr: int
     op: char
     tape: array[256, uint8]
     tapePtr: int = 0
 
-  while opPtr < file.len:
-    op = file[opPtr]
+  while opPtr < prog.len:
+    op = prog[opPtr]
 
     case op:
       of '+':
