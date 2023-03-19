@@ -5,7 +5,7 @@ proc main() =
   # interpretFile(args[0])
 
   let assembly =  compileProgram(args[0])
-  writeFile("bin/out.asm", assembly)
+  writeFile("build/out.asm", assembly)
 
 when isMainModule:
   main()
