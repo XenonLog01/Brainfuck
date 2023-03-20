@@ -1,4 +1,4 @@
-import os, interpreter, comp
+import os, comp
 
 proc main() =
   let args = commandLineParams()

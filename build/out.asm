@@ -1,204 +1,225 @@
 extern _putchar
-extern _ExitProcess@4
 section .data
 tape:   times 256 db 0
-tptr:   db 1
+tptr:   db 0
 
 section .text
 global  _main
 _main:
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
   loop0:
-  movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
   loop1:
-  movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-      movzx eax, byte [tptr]
-    test eax, eax
-    jnz loop1
-  movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    dec byte [tptr]
+    dec byte [tptr]
+    dec byte [tptr]
+    dec byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+  movzx edi, byte [tptr]
+  cmp byte [edi + tape], 0
+  jz loop1
+  inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    inc byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
   loop2:
-  movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-      movzx eax, byte [tptr]
-    test eax, eax
-    jnz loop2
-  movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-      movzx eax, byte [tptr]
-    test eax, eax
-    jnz loop2
-  movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
+    dec byte [tptr]
+  movzx edi, byte [tptr]
+  cmp byte [edi + tape], 0
+  jz loop2
+  dec byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+  movzx edi, byte [tptr]
+  cmp byte [edi + tape], 0
+  jz loop2
+  inc byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
+    inc byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
+    dec byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
+    dec byte [tptr]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    add byte [tptr], 1
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    dec byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
+    inc byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
+    inc byte [tptr]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    inc byte [edi + tape]
+    movzx edi, byte [tptr]
+    movzx eax, byte [edi + tape]
     push eax
     call _putchar
-      push 0x10
+    push 0x10
     call _putchar
-    push 52
-    call _ExitProcess@4
+    xor eax, eax
+    ret
   
