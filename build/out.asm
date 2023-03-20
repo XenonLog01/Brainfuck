@@ -1,4 +1,5 @@
 extern _putchar
+extern _ExitProcess@4
 section .data
 tape:   times 256 db 0
 tptr:   db 1
@@ -198,6 +199,6 @@ _main:
     call _putchar
       push 0x10
     call _putchar
-    xor eax, eax
-    ret
+    push 52
+    call _ExitProcess@4
   
