@@ -1,6 +1,10 @@
+import std/strformat
+
 proc header*(): string =
   """
 extern _putchar
+extern _ExitProcess@4
+
 section .data
 tape:   times 256 db 0
 tptr:   db 0
@@ -12,10 +16,8 @@ _main:
 
 proc footer*(): string =
   """
-  push 0x10
-    call _putchar
-    xor eax, eax
-    ret
+  push 0
+    call _ExitProcess@4
   """
 
 proc op_outb*(): string =
@@ -50,10 +52,13 @@ proc op_sub*(): string =
   """
 
 proc op_loopStart*(loopNo: int): string =
-  "loop" & $loopNo & ":\n  "
+  fmt"""
+loop{loopNo}:
+  """
 
 proc op_loopEnd*(loopNo: int): string =
-  return 
-    "movzx edi, byte [tptr]\n" & 
-    "  cmp byte [edi + tape], 0\n" &
-    "  jz loop" & $loopNo & "\n"
+  return fmt"""
+  movzx edi, byte [tptr]
+    cmp byte [edi + tape], 0
+    jz loop{loopNo}
+  """

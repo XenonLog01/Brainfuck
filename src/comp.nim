@@ -1,4 +1,5 @@
 import genasm
+import tables
 
 type 
   TkTyp {.pure.} = enum
@@ -18,6 +19,25 @@ proc genToken(c: char): Token =
     of ']': Token(typ: TkTyp.LoopEnd)
     else: Token(typ: TkTyp.Comment)
 
+proc genLoops(file: string): Table[int, int] =
+  var
+    loopStack: seq[int]
+    loopTable = initTable[int, int]()
+    idx = 0
+    chr: char
+
+  while idx < file.len:
+    chr = file[idx]
+    if chr == '[':
+      loopStack.add(idx)
+    elif chr == ']':
+      let startIdx = loopStack.pop()
+      loopTable[startIdx] = idx
+      loopTable[idx] = startIdx
+    idx += 1
+
+  return loopTable
+
 proc lexFile(file: string): seq[Token] =
   var chr: int
 
@@ -30,7 +50,9 @@ proc compileProgram*(file: string): string =
 
   let toks = lexFile(prog)
 
-  var cLoopNo = -1
+  var 
+    loopCount = -1
+    currentLoop = -1
 
   result.add header()
 
@@ -47,10 +69,12 @@ proc compileProgram*(file: string): string =
       of TkTyp.OutB:
         result.add op_outb()
       of TkTyp.LoopStart:
-        inc cLoopNo
-        result.add op_loopStart(cLoopNo)
+        inc loopCount
+        inc currentLoop
+        result.add op_loopStart(loopCount)
       of TkTyp.LoopEnd:
-        result.add op_loopEnd(cLoopNo)
+        result.add op_loopEnd(currentLoop)
+        dec currentLoop
       else: discard
 
   result.add footer()

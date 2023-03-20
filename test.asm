@@ -1,17 +1,18 @@
 extern _putchar
 
 section .data
-a:  db 'A'
+t:  times 2 db 0
+a:  db 0
 
 section .text
 global _main
 _main:
-l:
-  push a
+  inc byte [a]
+  movzx edi, byte [a]
+  add byte [edi + t], 42
+  movzx eax, byte [edi + t]
+  push eax
   call _putchar
-  sub byte [a], 1
-  movzx  eax, byte [a]
-  test eax, eax
-  jnz l
   xor eax, eax
   ret
+
