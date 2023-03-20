@@ -14,14 +14,16 @@ _main:
     add byte [tptr], 1
     add byte [tptr], 1
     add byte [tptr], 1
-    movzx eax, byte [tptr]
+  loop0:
+  movzx eax, byte [tptr]
     add eax, 1
     mov byte [tptr], al
     add byte [tptr], 1
     add byte [tptr], 1
     add byte [tptr], 1
     add byte [tptr], 1
-    movzx eax, byte [tptr]
+  loop1:
+  movzx eax, byte [tptr]
     add eax, 1
     mov byte [tptr], al
     add byte [tptr], 1
@@ -38,38 +40,6 @@ _main:
     add byte [tptr], 1
     add byte [tptr], 1
     add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    movzx eax, byte [tptr]
-    sub eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    add byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
-    sub byte [tptr], 1
-    movzx eax, byte [tptr]
-    add eax, 1
-    mov byte [tptr], al
     movzx eax, byte [tptr]
     add eax, 1
     mov byte [tptr], al
@@ -80,8 +50,50 @@ _main:
     movzx eax, byte [tptr]
     sub eax, 1
     mov byte [tptr], al
+    movzx eax, byte [tptr]
+    sub eax, 1
+    mov byte [tptr], al
+    movzx eax, byte [tptr]
+    sub eax, 1
+    mov byte [tptr], al
+    sub byte [tptr], 1
+      movzx eax, byte [tptr]
+    test eax, eax
+    jnz loop1
+  movzx eax, byte [tptr]
+    add eax, 1
+    mov byte [tptr], al
+    add byte [tptr], 1
+    movzx eax, byte [tptr]
+    add eax, 1
+    mov byte [tptr], al
+    add byte [tptr], 1
+    movzx eax, byte [tptr]
+    add eax, 1
+    mov byte [tptr], al
     sub byte [tptr], 1
     movzx eax, byte [tptr]
+    add eax, 1
+    mov byte [tptr], al
+    movzx eax, byte [tptr]
+    add eax, 1
+    mov byte [tptr], al
+    add byte [tptr], 1
+  loop2:
+  movzx eax, byte [tptr]
+    sub eax, 1
+    mov byte [tptr], al
+      movzx eax, byte [tptr]
+    test eax, eax
+    jnz loop2
+  movzx eax, byte [tptr]
+    sub eax, 1
+    mov byte [tptr], al
+    sub byte [tptr], 1
+      movzx eax, byte [tptr]
+    test eax, eax
+    jnz loop2
+  movzx eax, byte [tptr]
     add eax, 1
     mov byte [tptr], al
     movzx eax, byte [tptr]
@@ -184,7 +196,7 @@ _main:
     movzx eax, byte [tptr]
     push eax
     call _putchar
-    push 0x10
+      push 0x10
     call _putchar
     xor eax, eax
     ret

@@ -12,7 +12,7 @@ _main:
 
 proc footer*(): string =
   """
-  push 0x10
+    push 0x10
     call _putchar
     xor eax, eax
     ret
@@ -50,3 +50,11 @@ proc op_sub*(): string =
   sub byte [tptr], 1
   """
 
+proc op_loopStart*(loopNo: int): string =
+  "loop" & $loopNo & ":\n"
+
+proc op_loopEnd*(loopNo: int): string =
+  return 
+    "    movzx eax, byte [tptr]\n" &
+    "    test eax, eax\n" &
+    "    jnz loop" & $loopNo & "\n"

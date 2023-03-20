@@ -27,7 +27,10 @@ proc lexFile(file: string): seq[Token] =
 
 proc compileProgram*(file: string): string =
   let prog = readFile(file)
+
   let toks = lexFile(prog)
+
+  var cLoopNo = -1
 
   result.add header()
 
@@ -43,6 +46,11 @@ proc compileProgram*(file: string): string =
         result.add op_dec()
       of TkTyp.OutB:
         result.add op_outb()
+      of TkTyp.LoopStart:
+        inc cLoopNo
+        result.add op_loopStart(cLoopNo)
+      of TkTyp.LoopEnd:
+        result.add op_loopEnd(cLoopNo)
       else: discard
 
   result.add footer()
